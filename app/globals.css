@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f5f7f2;
+  --foreground: #1e293b;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.input {
+  @apply w-full rounded-2xl border border-slate-200 bg-[#f8faf8] px-4 py-3 outline-none transition focus:border-emerald-500;
+}
+
+.section-fade {
+  animation: fadeUp 0.8s ease both;
+}
+
+.hover-lift {
+  @apply transition duration-300;
+}
+
+.hover-lift:hover {
+  transform: translateY(-6px);
+}
+
+.hover-scale {
+  @apply transition duration-300;
+}
+
+.hover-scale:hover {
+  transform: scale(1.02);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.input {
+  @apply w-full rounded-2xl border border-slate-200 bg-[#f8faf8] px-4 py-3 outline-none transition focus:border-emerald-500;
+}
