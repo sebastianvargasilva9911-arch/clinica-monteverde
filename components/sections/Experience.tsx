@@ -16,7 +16,7 @@ export default function Experience() {
           {/* Espacio adecuado */}
           <div className="overflow-hidden rounded-[2rem] border border-slate-100 bg-white shadow-sm">
             <img
-              src="https://images.unsplash.com/photo-1666214280557-f1b5022eb634?auto=format&fit=crop&w=1200&q=80"
+              src="/images/clinic/espacio.jpg"
               alt="Espacio clínico"
               className="h-64 w-full object-cover"
             />
@@ -34,7 +34,7 @@ export default function Experience() {
           {/* Música ambiente */}
           <div className="overflow-hidden rounded-[2rem] border border-slate-100 bg-white shadow-sm">
             <img
-              src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=1200&q=80"
+              src="/images/clinic/ambiente.jpg"
               alt="Música ambiente"
               className="h-64 w-full object-cover"
             />
@@ -52,7 +52,7 @@ export default function Experience() {
           {/* Atención de calidad */}
           <div className="overflow-hidden rounded-[2rem] border border-slate-100 bg-white shadow-sm">
             <img
-              src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80"
+              src="/images/clinic/atencion.jpg"
               alt="Atención de calidad"
               className="h-64 w-full object-cover"
             />
