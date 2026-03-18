@@ -16,6 +16,10 @@ export const metadata = {
   title: "Clínica Monteverde | Clínica Dental en Puerto Montt",
   description:
     "Clínica dental en Puerto Montt especializada en ortodoncia, implantología y rehabilitación oral. Agenda tu hora fácilmente.",
+
+     icons: {
+    icon: "/favicon.png",
+  },
   keywords: [
     "clinica dental puerto montt",
     "dentista puerto montt",
