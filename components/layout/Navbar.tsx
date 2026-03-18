@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 
@@ -15,12 +16,28 @@ const navLinks = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   const closeMenu = () => setIsOpen(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 16);
+
+      let currentSection = "";
+
+      for (const link of navLinks) {
+        const section = document.querySelector(link.href) as HTMLElement | null;
+        if (!section) continue;
+
+        const rect = section.getBoundingClientRect();
+
+        if (rect.top <= 140 && rect.bottom >= 140) {
+          currentSection = link.href.replace("#", "");
+        }
+      }
+
+      setActiveSection(currentSection);
     };
 
     handleScroll();
@@ -59,11 +76,18 @@ export default function Navbar() {
           onClick={closeMenu}
         >
           <motion.div
-            whileHover={{ scale: 1.06, rotate: -2 }}
+            whileHover={{ scale: 1.04, y: -1 }}
             transition={{ type: "spring", stiffness: 260, damping: 16 }}
-            className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-700 text-base font-bold text-white shadow-lg shadow-emerald-900/20"
+            className="overflow-hidden rounded-2xl shadow-lg shadow-emerald-900/10"
           >
-            CM
+            <Image
+              src="/images/logo-monteverde.png"
+              alt="Logo Clínica Monteverde"
+              width={52}
+              height={52}
+              className="h-[52px] w-[52px] object-cover"
+              priority
+            />
           </motion.div>
 
           <div className="leading-tight">
@@ -77,33 +101,31 @@ export default function Navbar() {
         </a>
 
         <nav className="hidden items-center gap-7 md:flex">
-          {navLinks.map((link) => (
-            <motion.a
-              key={link.href}
-              href={link.href}
-              whileHover={{ y: -2 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="relative text-sm font-medium text-slate-700 transition hover:text-emerald-700"
-            >
-              <span>{link.label}</span>
-              <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-emerald-700 transition-all duration-300 hover:w-full" />
-            </motion.a>
-          ))}
-        </nav>
+          {navLinks.map((link) => {
+            const isActive = activeSection === link.href.replace("#", "");
 
-        <div className="hidden md:block">
-          <motion.a
-            href="https://wa.me/56997054365"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.98 }}
-            transition={{ type: "spring", stiffness: 260, damping: 18 }}
-            className="rounded-full bg-emerald-700 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-emerald-900/20 transition hover:bg-emerald-800"
-          >
-            WhatsApp
-          </motion.a>
-        </div>
+            return (
+              <motion.a
+                key={link.href}
+                href={link.href}
+                whileHover={{ y: -2 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className={`group relative text-sm font-medium transition ${
+                  isActive
+                    ? "text-emerald-700"
+                    : "text-slate-700 hover:text-emerald-700"
+                }`}
+              >
+                <span>{link.label}</span>
+                <span
+                  className={`absolute -bottom-1 left-0 h-[2px] bg-emerald-700 transition-all duration-300 ${
+                    isActive ? "w-full" : "w-0 group-hover:w-full"
+                  }`}
+                />
+              </motion.a>
+            );
+          })}
+        </nav>
 
         <motion.button
           type="button"
@@ -176,34 +198,28 @@ export default function Navbar() {
               }}
               className="mx-auto flex max-w-7xl flex-col px-6 py-4"
             >
-              {navLinks.map((link) => (
-                <motion.a
-                  key={link.href}
-                  href={link.href}
-                  onClick={closeMenu}
-                  variants={{
-                    hidden: { opacity: 0, y: 12 },
-                    show: { opacity: 1, y: 0 },
-                  }}
-                  className="rounded-2xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-emerald-50 hover:text-emerald-700"
-                >
-                  {link.label}
-                </motion.a>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = activeSection === link.href.replace("#", "");
 
-              <motion.a
-                href="https://wa.me/56997054365"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={closeMenu}
-                variants={{
-                  hidden: { opacity: 0, y: 12 },
-                  show: { opacity: 1, y: 0 },
-                }}
-                className="mt-3 rounded-full bg-emerald-700 px-5 py-3 text-center text-sm font-semibold text-white shadow-lg shadow-emerald-900/20 transition hover:bg-emerald-800"
-              >
-                WhatsApp
-              </motion.a>
+                return (
+                  <motion.a
+                    key={link.href}
+                    href={link.href}
+                    onClick={closeMenu}
+                    variants={{
+                      hidden: { opacity: 0, y: 12 },
+                      show: { opacity: 1, y: 0 },
+                    }}
+                    className={`rounded-2xl px-4 py-3 text-sm font-medium transition ${
+                      isActive
+                        ? "bg-emerald-50 text-emerald-700"
+                        : "text-slate-700 hover:bg-emerald-50 hover:text-emerald-700"
+                    }`}
+                  >
+                    {link.label}
+                  </motion.a>
+                );
+              })}
             </motion.nav>
           </motion.div>
         )}

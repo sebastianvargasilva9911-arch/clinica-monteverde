@@ -26,6 +26,7 @@ export default function Home() {
         <Agreements />
         <Booking />
         <Contact />
+        <WhatsAppButton />
        
       </main>
 
