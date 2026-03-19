@@ -1,15 +1,15 @@
 const testimonials = [
   {
-    name: "Paciente 1",
-    text: "La atención fue excelente, muy profesional y cercana. Me sentí en confianza desde el primer momento.",
+    name: "Anamaría Barrera Ramírez",
+    text: "¡Excelente atención, excelentes profesionales y mucha empatía con los niños y niñas!!!",
   },
   {
-    name: "Paciente 2",
-    text: "La clínica transmite tranquilidad, orden y calidad. El equipo fue muy amable durante todo el proceso.",
+    name: "Daniela Yohana Guerrero Hernández",
+    text: "De partida la atención es excelente, con un ambiente cálido, muy buenos profesionales y los precios convenientes, 100% recomendable.",
   },
   {
-    name: "Paciente 3",
-    text: "Quedé muy conforme con el tratamiento y la explicación que me dieron. Totalmente recomendable.",
+    name: "Nicol Fabres",
+    text: "Excelente clínica dental, precios accesibles y buenísimos profesionales 100% recomendable.",
   },
 ];
 
