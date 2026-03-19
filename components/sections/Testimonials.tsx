@@ -26,12 +26,13 @@ export default function Testimonials() {
         </h3>
       </div>
 
-      <div className="mt-12 grid gap-6 lg:grid-cols-3">
+      <div className="mt-12 grid auto-rows-fr gap-6 lg:grid-cols-3">
         {testimonials.map((testimonial) => (
           <article
             key={testimonial.name}
-            className="rounded-[1.75rem] border border-emerald-100 bg-white p-8 shadow-sm"
+            className="flex h-full flex-col justify-between rounded-[1.75rem] border border-emerald-100 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
           >
+            {/* Estrellas */}
             <div className="mb-5 flex gap-1">
               <span className="h-2.5 w-2.5 rounded-full bg-emerald-600" />
               <span className="h-2.5 w-2.5 rounded-full bg-emerald-600" />
@@ -40,9 +41,13 @@ export default function Testimonials() {
               <span className="h-2.5 w-2.5 rounded-full bg-emerald-600" />
             </div>
 
-            <p className="leading-7 text-slate-600">“{testimonial.text}”</p>
+            {/* Texto */}
+            <p className="leading-7 text-slate-600">
+              “{testimonial.text}”
+            </p>
 
-            <p className="mt-5 font-semibold text-slate-800">
+            {/* Nombre */}
+            <p className="mt-6 text-sm font-semibold text-slate-800">
               {testimonial.name}
             </p>
           </article>
